@@ -10,7 +10,7 @@ $stmt = $conn->query("SELECT * FROM countries");
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET)){
-    if(!empty($_GET['country'])){
+    if(!empty($_GET['country']) && empty($_GET['context'])){
         $country = filter_var($_GET['country'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES);
         $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%';");
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,6 +37,11 @@ if(isset($_GET)){
             </tbody>
         </table>
         <?php
+    } else if(!empty($_GET['country']) && !empty($_GET['context'])){
+        $country = filter_var($_GET['country'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES);
+        $stmt = $conn->query("SELECT c.name AS name, c.district AS district, c.population AS population FROM cities c JOIN countries cs ON c.country_code = cs.code WHERE cs.name LIKE \"%$santized_country%\" ORDER BY cs.name ASC;");
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
     } else {
         $stmt = $conn->query("SELECT * FROM countries;");
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);

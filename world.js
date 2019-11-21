@@ -6,7 +6,8 @@ $(document).ready(function(){
 
         $.get("world.php", 
 		{ 
-		    country: c_name 
+		    country: c_name,
+		    context: ""
 		}).done(function(response){ 
 		    let res = response; 
 		    $('#result').html(res); 

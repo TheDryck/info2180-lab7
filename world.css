@@ -1,1 +1,42 @@
 /* Add your own styles */
+body{
+    background-color: #1ebbd7;
+}
+
+header{
+    text-align: center;
+}
+
+table tr{
+    border: 1px solid #000000;
+}
+
+table{
+    border: 1px solid #000000;
+    background-color: #71c7ec;
+    width: 100%;
+    padding-top: 1em;
+}
+
+caption{
+    padding-top: 1.8em;
+    padding-bottom: 1.8em;
+}
+
+table thead{
+    background-color: #005073;
+}
+
+table th{
+    border: 1px solid #000000;
+    /*margin-top: 0px;
+    padding-top: 0px;*/
+}
+
+table tr:nth-child(even) {
+  background: #189ad3;
+}
+
+#controls{
+    text-align: center;
+}
